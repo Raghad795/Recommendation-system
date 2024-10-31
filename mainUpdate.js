@@ -2,6 +2,9 @@ const fs = require('fs');
 const readlineSync = require('readline-sync');
 const crypto = require('crypto');
 
+const { signUp } = require('./sign_Up'); // Import signUp function from sign_Up.js
+const { signIn } = require('./sign_In');
+
 const MAX_ATTEMPTS = 10;
 let attempts = 0;
 

@@ -1,0 +1,26 @@
+{
+  "1002": {
+    "category": "Fitness",
+    "duration": 140,
+    "level": "1",
+    "goal": "Stress Relief",
+    "requiredWeeklyExerciseTime": [
+      {
+        "plan": "yoga",
+        "totalDuration": 140
+      }
+    ]
+  },
+  "1003": {
+    "category": "Fitness",
+    "duration": 180,
+    "level": "0",
+    "goal": "Weight Loss",
+    "requiredWeeklyExerciseTime": [
+      {
+        "plan": "cardio",
+        "totalDuration": 180
+      }
+    ]
+  }
+}
