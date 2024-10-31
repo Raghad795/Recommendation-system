@@ -1,0 +1,181 @@
+
+
+{
+    "Cardio": {
+      "duration": "150 minutes",
+      "level": "Beginner",
+      "goal": "Weight Loss",
+      "diseases": [
+        "Cardiovascular Disease",
+        "Hypertension",
+        "Coronary Artery Disease",
+        "Congestive Heart Failure",
+        "Respiratory Condition",
+        "Asthma",
+        "Chronic Obstructive Pulmonary Disease (COPD)",
+        "Pulmonary Fibrosis",
+        "Diabetes",
+        "Peripheral Artery Disease",
+        "Obstructive Sleep Apnea",
+        "Hyperlipidemia",
+        "Anemia"
+      ],
+      "surgeries": [
+        "Heart Surgery",
+        "Coronary Artery Bypass Grafting",
+        "Valve Replacement",
+        "Angioplasty",
+        "Knee Surgery",
+        "Hip Surgery",
+        "Total Knee Arthroplasty",
+        "Hip Resurfacing",
+        "Lung Surgery",
+        "Lobectomy",
+        "Lung Volume Reduction Surgery",
+        "Vascular Surgery",
+        "Endarterectomy",
+        "Stent Placement",
+        "Abdominal Surgery",
+        "Gallbladder Removal",
+        "Appendectomy"
+      ]
+    },
+    "Strength Training": {
+      "duration": "120 minutes",
+      "level": "Intermediate",
+      "goal": "Muscle Building",
+      "diseases": [
+        "Musculoskeletal Disorder",
+        "Osteoarthritis",
+        "Rheumatoid Arthritis",
+        "Osteoporosis",
+        "Diabetes",
+        "Obesity",
+        "Chronic Back Pain",
+        "Herniated Discs",
+        "Degenerative Disc Disease",
+        "Tendonitis",
+        "Rotator Cuff",
+        "Achilles Tendon",
+        "Fibromyalgia",
+        "Neuropathy",
+        "Peripheral Neuropathy"
+      ],
+      "surgeries": [
+        "Joint Replacement Surgery",
+        "Total Hip or Knee Replacement",
+        "Spinal Surgery",
+        "Laminectomy",
+        "Spinal Fusion",
+        "Shoulder Surgery",
+        "Rotator Cuff Repair",
+        "Shoulder Stabilization",
+        "Wrist or Elbow Surgery",
+        "Carpal Tunnel Release",
+        "Tennis Elbow Repair",
+        "Hernia Repair Surgery"
+      ]
+    },
+    "Flexibility": {
+      "duration": "90 minutes",
+      "level": "Beginner",
+      "goal": "Improve Flexibility",
+      "diseases": [
+        "Arthritis",
+        "Osteoarthritis",
+        "Rheumatoid Arthritis",
+        "Neuromuscular Disorders",
+        "Multiple Sclerosis",
+        "Muscular Dystrophy",
+        "Cerebral Palsy",
+        "Connective Tissue Disorders",
+        "Ehlers-Danlos Syndrome",
+        "Scleroderma",
+        "Chronic Pain Conditions",
+        "Fibromyalgia"
+      ],
+      "surgeries": [
+        "Joint Surgery",
+        "Knee Arthroscopy",
+        "Hip Replacement",
+        "Back Surgery",
+        "Discectomy",
+        "Spinal Fusion",
+        "Ligament Reconstruction Surgery",
+        "ACL Reconstruction",
+        "Tendon Repair Surgery",
+        "Achilles Tendon Repair",
+        "Bunion Surgery"
+      ]
+    },
+    "HIIT": {
+      "duration": "90 minutes",
+      "level": "Advanced",
+      "goal": "Improve Cardiovascular Health",
+      "diseases": [
+        "Cardiovascular Condition",
+        "Heart Disease",
+        "Arrhythmias",
+        "Hypertension",
+        "Obesity",
+        "Diabetes",
+        "Asthma",
+        "Chronic Fatigue Syndrome",
+        "Seizure Disorders",
+        "Epilepsy",
+        "Peripheral Vascular Disease"
+      ],
+      "surgeries": [
+        "Cardiac Surgery",
+        "Coronary Artery Bypass Grafting",
+        "Stent Placement",
+        "Orthopedic Surgery",
+        "Knee Surgery",
+        "Shoulder Surgery",
+        "Abdominal Surgery",
+        "Gastric Bypass Surgery",
+        "Joint Replacement Surgery",
+        "Spinal Surgery",
+        "Laminectomy"
+      ]
+    },
+    "Yoga": {
+      "duration": "120 minutes",
+      "level": "Beginner",
+      "goal": "Stress Relief",
+      "diseases": [
+        "Chronic Pain Condition",
+        "Fibromyalgia",
+        "Chronic Fatigue Syndrome",
+        "Arthritis",
+        "Osteoarthritis",
+        "Rheumatoid Arthritis",
+        "Cardiovascular Disease",
+        "Heart Disease",
+        "Hypertension",
+        "Respiratory Condition",
+        "Asthma",
+        "COPD",
+        "Neurological Disorders",
+        "Multiple Sclerosis",
+        "Parkinson's Disease",
+        "Depression Disorders",
+        "Diabetes"
+      ],
+      "surgeries": [
+        "Spinal Surgery",
+        "Spinal Fusion",
+        "Microdiscectomy",
+        "Joint Surgery",
+        "Total Knee Replacement",
+        "Hip Replacement",
+        "Abdominal Surgery",
+        "Hernia Repair",
+        "Shoulder Surgery",
+        "Rotator Cuff Repair",
+        "Ligament Reconstruction Surgery",
+        "ACL Reconstruction"
+      ]
+    }
+  }
+  
