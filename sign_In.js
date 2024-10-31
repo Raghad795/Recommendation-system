@@ -1,11 +1,6 @@
 const fs = require('fs');
-const readline = require('readline');
+const readlineSync = require('readline-sync');
 const crypto = require('crypto');
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
 const MAX_ATTEMPTS = 10;
 let attempts = 0;
@@ -28,25 +23,25 @@ function checkUser(username, password) {
 }
 
 function signIn() {
-    rl.question('Enter your username: ', (username) => {
-        rl.question('Enter your password: ', (password) => {
-            const user = checkUser(username, password);
+    const username = readlineSync.question('Enter your username: ');
+    const password = readlineSync.question('Enter your password: ', { hideEchoBack: true });
 
-            if (user) {
-                console.log('Sign in successful!');
-            } else {
-                attempts++;
-                if (attempts < MAX_ATTEMPTS) {
-                    console.log('Invalid username or password. Please try again.');
-                    signIn(); // Retry sign-in
-                } else {
-                    console.log('Exceeded maximum login attempts. Please try again later.');
-                    rl.close();
-                }
-            }
-        });
-    });
+    const user = checkUser(username, password);
+
+    if (user) {
+        console.log('Sign in successful!');
+        return user.id; // Return the user ID upon successful sign-in
+    } else {
+        attempts++;
+        if (attempts < MAX_ATTEMPTS) {
+            console.log('Invalid username or password. Please try again.');
+            return signIn(); // Retry sign-in and return the result
+        } else {
+            console.log('Exceeded maximum login attempts. Please try again later.');
+            return null; // Return null if maximum login attempts exceeded
+        }
+    }
 }
 
 // sign-in
-signIn();
+module.exports = { signIn };
