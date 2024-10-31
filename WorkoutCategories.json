@@ -1,7 +1,7 @@
 {
-    "Cardio":{"duration":"150 minutes", "level":"Beginner", "goal":"Weight Loss"},
-    "Strength Training":{"duration":"120 minutes", "level":"Intermediate", "goal":"Muscle Building"},
-    "Flexibility":{"duration":"90 minutes", "level":"Beginner", "goal":"Improve Flexibility"},
-    "HIIT":{"duration":"90 minutes", "level":"Advanced", "goal":"Improve Cardiovascular Health"},
-    "Yoga":{"duration":"120 minutes", "level":"Beginner", "goal":"Stress Relief"}
+    "Cardio":{"duration":"150 minutes", "level":"Beginner", "goal":"Weight Loss", "illness": ["Uncontrolled hypertension", "Recent heart attack", "Unstable angina", "Severe heart failure", "Severe asthma", "Chronic obstructive pulmonary disease (COPD)"],"surgeries": ["Coronary artery bypass grafting (CABG)", "Heart valve surgery"], "minAge": 6},
+    "Strength Training":{"duration":"120 minutes", "level":"Intermediate", "goal":"Muscle Building", "illness": ["none"],"surgeries": ["none"], "minAge": 3},
+    "Flexibility":{"duration":"90 minutes", "level":"Beginner", "goal":"Improve Flexibility", "illness": ["Severe osteoarthritis", "Rheumatoid arthritis", "Fibromyalgia", "Chronic fatigue syndrome"],"surgeries": ["Spinal fusion", "Major spinal surgeries", "Hip replacement", "Knee replacement", "Appendectomy", "Hernia repair", "Brain surgery"], "minAge": 5},
+    "HIIT":{"duration":"90 minutes", "level":"Advanced", "goal":"Improve Cardiovascular Health", "illness": ["none"],"surgeries": ["none"], "minAge": 3},
+    "Yoga":{"duration":"120 minutes", "level":"Beginner", "goal":"Stress Relief", "illness": ["none"],"surgeries": ["none"], "minAge": 3}
 }
