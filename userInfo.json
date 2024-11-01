@@ -336,5 +336,108 @@
                 "surgeries": []
             }
         }
+    },
+    {
+        "userId": 1080,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 1,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1081,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 1,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1082,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 1,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1083,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 1,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1084,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 1,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1085,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 1,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1086,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 23,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1088,
+        "fitnessGoal": "Weight Loss",
+        "duration": 160,
+        "fitnessLevel": "Advanced",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [
+                    "Uncontrolled hypertension",
+                    "Recent heart attack",
+                    "Unstable angina",
+                    "Severe heart failure"
+                ],
+                "surgeries": []
+            }
+        }
     }
 ]

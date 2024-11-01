@@ -185,9 +185,9 @@ function findSuitableWorkout(workoutCategories, goal, level, exerciseTime, Medic
                 }
             }
 
-            return { result: result, totalExerciseTime: totalExerciseTime };
+            return { success: true, result: result, totalExerciseTime: totalExerciseTime };
         } else {
-            return 'You are not old enough for this workout category.';
+            return { success: false, message: 'You are not old enough for this workout category.'};
         }
     }
 

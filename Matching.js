@@ -81,7 +81,6 @@ function userInput(userId){
         const exerciseTime = calculateExerciseTime(fitnessLevel);
     
         const medicalConditionIndex = readlineSync.keyInSelect(medicalConditions, 'Do you have any medical conditions or surgeries?', { cancel: false });
-        console.log(medicalConditionIndex);
         let MedicalHistory = {};
         if (medicalConditionIndex === 0) { 
             MedicalHistory = CheckMedicalHistory(medicalConditionIndex); 
@@ -98,24 +97,28 @@ function userInput(userId){
             const data = fs.readFileSync('WorkoutCategories.json', 'utf8');
             const workoutCategories = JSON.parse(data);
             let suitableWorkout = findSuitableWorkout(workoutCategories, fitnessGoal, fitnessLevel, exerciseTime, MedicalHistory, MedicalHistory.age);
-        
-            if (suitableWorkout) {
-                console.log('Your suitable workout:\n');
-                console.log(suitableWorkout.result);
-        
-                // Prepare user data object
-                const userData = {
-                    userId: userId,
-                    fitnessGoal: fitnessGoal,
-                    duration: suitableWorkout.totalExerciseTime,
-                    fitnessLevel: fitnessLevel,
-                    medicalHistory: MedicalHistory
-                };
-                // Save user data to file using the function
-                saveUserDataToFile(userData);
-            } else {
-                console.log('No suitable workout found.');
+            if(suitableWorkout){
+                if (suitableWorkout.success) {
+                    console.log('Your suitable workout:\n');
+                    console.log(suitableWorkout.result);
+            
+                    // Prepare user data object
+                    const userData = {
+                        userId: userId,
+                        fitnessGoal: fitnessGoal,
+                        duration: suitableWorkout.totalExerciseTime,
+                        fitnessLevel: fitnessLevel,
+                        medicalHistory: MedicalHistory
+                    };
+                    // Save user data to file using the function
+                    saveUserDataToFile(userData);
+                } else {
+                    console.log(suitableWorkout.message);
+                }
+            }else{
+                console.log('No suitable workout found.')
             }
+
         } catch (err) {
             console.error('Error reading file:', err);
         }
