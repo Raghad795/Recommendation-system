@@ -1,228 +1,122 @@
-const fs = require('fs'); // File system module for reading files
-const readline = require('readline'); // Module for reading user input
+// Importing functions from other files
+const readlineSync = require('readline-sync');
+const fs = require('fs');
+const { signUp } = require('./sign_Up');
+const { signIn } = require('./sign_In'); 
+const {findSuitableWorkout, CheckMedicalHistory, calculateExerciseTime, saveUserDataToFile, getUserDataById, formatUserData} = require('./fitnessFunctions');
 
-// Interface to read user input
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+let Result;
 
-//User input variables
-let fitnessGoal, fitnessLevel, MedicalHistory;
 
-function getFitnessGoal(choice) {
-    switch (choice) {
-        case 1:
-            return 'Weight Loss';
-        case 2:
-            return 'Muscle Building';
-        case 3:
-            return 'Improve Flexibility';
-        case 4:
-            return 'Improve Cardiovascular Health';
-        case 5:
-            return 'Stress Relief';
-        default:
-            return 'Unknown';
+const fitnessGoals = [
+    'Weight Loss',
+    'Muscle Building',
+    'Improve Flexibility',
+    'Improve Cardiovascular Health',
+    'Stress Relief'
+];
+
+const fitnessLevels = [
+    'Beginner',
+    'Intermediate',
+    'Advanced'
+];
+
+const medicalConditions = [
+    'Yes',
+    'No'
+];
+
+// Add a select dropdown for sign-up or sign-in
+const signUpOrSignInOptions = ['Sign Up', 'Sign In'];
+const signUpOrSignInIndex = readlineSync.keyInSelect(signUpOrSignInOptions, 'Select an option:');
+
+if (signUpOrSignInIndex === 0) {
+    // Sign Up
+    Result = signUp();
+
+    if (Result.success) {
+        const userId = Result.userId;
+        userInput(userId);
+
+    } else {
+        // if sign-up failed
+        console.log("Sign-up failed. Please try again.");
     }
-}
+} else if (signUpOrSignInIndex === 1) {
+    // Sign In
+    Result = signIn();
+    const userId = Result;
+    console.log('User ID:', userId);
 
-function getFitnessLevel(choice) {
-    switch (choice) {
-        case 1:
-            return 'Beginner';
-        case 2:
-            return 'Intermediate';
-        case 3:
-            return 'Advanced';
-        default:
-            return 'Unknown';
-    }
-}
+    if (Result !== null) {
+        console.log('Successful sign in.');
 
-function getMedicalCondition(choice) {
-    switch (choice) {
-        case 1:
-            return 'Uncontrolled hypertension';
-        case 2:
-            return 'Recent heart attack';
-        case 3:
-            return 'Unstable angina';
-        case 4:
-            return 'Severe heart failure';
-        case 5:
-            return 'Severe asthma';
-        case 6:
-            return 'Chronic obstructive pulmonary disease (COPD)';
-        case 7:
-            return 'Severe osteoarthritis';
-        case 8:
-            return 'Rheumatoid arthritis';
-        case 9:
-            return 'Fibromyalgia';
-        case 10:
-            return 'Chronic fatigue syndrome';
-        default:
-            return 'Unknown';
-    }
-}
+        // Get user data by userId
+        const userData = getUserDataById(userId);
 
-function getSurgery(choice) {
-    switch (choice) {
-        case 1:
-            return 'Coronary artery bypass grafting (CABG)';
-        case 2:
-            return 'Heart valve surgery';
-        case 3:
-            return 'Spinal fusion';
-        case 4:
-            return 'Major spinal surgeries';
-        case 5:
-            return 'Hip replacement';
-        case 6:
-            return 'Knee replacement';
-        case 7:
-            return 'Appendectomy';
-        case 8:
-            return 'Hernia repair';
-        case 9:
-            return 'Brain surgery';
-        default:
-            return 'Unknown';
-    }
-}
-
-function CheckMedicalHistory(choice) {
-    return new Promise((resolve, reject) => {
-        let userAge = null; // Initialize userAge variable
-        let medicalHistory = { conditions: [], surgeries: [] };
-
-        // Function to ask for the user's age
-        function askForAge() {
-            rl.question('Please enter your age: ', (ageAnswer) => {
-                userAge = parseInt(ageAnswer);
-                if (choice === 1) {
-                    askForConditionOrSurgery();
-                } else {
-                    resolve({ age: userAge, medicalHistory: null });
-                }
-            });
-        }
-
-        // Function to ask for medical condition or surgery
-        function askForConditionOrSurgery() {
-            rl.question('Do you want to add a medical condition or a surgery?\n1. Medical Condition\n2. Surgery\n3. Done\n', (answer) => {
-                const selection = parseInt(answer);
-                if (selection === 1) {
-                    rl.question('Select a medical condition:\n1. Uncontrolled hypertension\n2. Recent heart attack\n3. Unstable angina\n4. Severe heart failure\n5. Severe asthma\n6. Chronic obstructive pulmonary disease (COPD)\n7. Severe osteoarthritis\n8. Rheumatoid arthritis\n9. Fibromyalgia\n10. Chronic fatigue syndrome\n', (conditionAnswer) => {
-                        medicalHistory.conditions.push(getMedicalCondition(parseInt(conditionAnswer)));
-                        askForConditionOrSurgery();
-                    });
-                } else if (selection === 2) {
-                    rl.question('Select a surgery:\n1. Coronary artery bypass grafting (CABG)\n2. Heart valve surgery\n3. Spinal fusion\n4. Major spinal surgeries\n5. Hip replacement\n6. Knee replacement\n7. Appendectomy\n8. Hernia repair\n9. Brain surgery\n', (surgeryAnswer) => {
-                        medicalHistory.surgeries.push(getSurgery(parseInt(surgeryAnswer)));
-                        askForConditionOrSurgery();
-                    });
-                } else if (selection === 3) {
-                    resolve({ age: userAge, medicalHistory });
-                } else {
-                    console.log('Invalid choice. Please select 1 for Medical Condition, 2 for Surgery, or 3 for Done.');
-                    askForConditionOrSurgery();
-                }
-            });
-        }
-
-        askForAge(); // Start by asking for the user's age
-    });
-}
-
-function findSuitableWorkout(workoutCategories, goal, level, MedicalHistory, userAge) {
-    let suitableWorkout = null;
-    let category = null;
-
-    // Iterate through each workout category in the workoutCategories JSON
-    for (let key in workoutCategories) {
-        const currentWorkout = workoutCategories[key];
-
-        // Check if the current workout matches the user's goal, level, and has no surgeries that match the user's surgeries
-        if (currentWorkout.goal === goal &&
-            // Check if the fitness level is the same or higher
-            (currentWorkout.level === level ||
-            (currentWorkout.level === 'Beginner' && (level === 'Intermediate' || level === 'Advanced')) ||
-            (currentWorkout.level === 'Intermediate' && level === 'Advanced') ||
-            (currentWorkout.level === 'Advanced' && level === 'Advanced')) &&
-            (!MedicalHistory || !MedicalHistory.medicalHistory ||
-                !MedicalHistory.medicalHistory.surgeries ||
-                !MedicalHistory.medicalHistory.surgeries.some(surgery => currentWorkout.surgeries.includes(surgery)))
-        ) {
-            suitableWorkout = currentWorkout;
-            category = key;
-            break;
-        }
-    }
-
-    // If a suitable workout is found
-    if (suitableWorkout) {
-         // Check if the user's age is greater than or equal to the minimum age for the workout
-        if (userAge >= parseInt(suitableWorkout.minAge)) {
-            const workoutDetails = workoutCategories[category];
-            let result = `
-                Category: ${category}
-                Goal: ${workoutDetails.goal}
-                Duration: ${workoutDetails.duration}
-                Level: ${workoutDetails.level}
-            `;
-
-            // Check for matching medical conditions and print a message if found
-            if (MedicalHistory && MedicalHistory.medicalHistory && MedicalHistory.medicalHistory.conditions) {
-                const conditionMatch = MedicalHistory.medicalHistory.conditions.find(condition =>
-                    workoutDetails.illness.includes(condition)
-                );
-
-                if (conditionMatch) {
-                    result += `\nConsult a doctor before continuing due to your medical condition: ${conditionMatch}`;
-                }
-            }
-
-            return result;
+        if (userData) {
+            console.log('User Data:\n');
+            console.log(formatUserData(userData));
         } else {
-            return 'You are not old enough for this workout category.';
+            userInput(userId);
         }
+    } else {
+        console.log('Failed to sign in.');
     }
-
-    // If no suitable workout is found
-    return 'No suitable workout found.';
+} else {
+console.log("Exiting program.");
 }
 
-rl.question('Select your Fitness Goal:\n1. Weight Loss\n2. Muscle Building\n3. Improve Flexibility\n4. Improve Cardiovascular Health\n5. Stress Relief\n', (answer1) => {
-    fitnessGoal = getFitnessGoal(parseInt(answer1));
-
-    rl.question('Select your Current Fitness Level:\n1. Beginner\n2. Intermediate\n3. Advanced\n', (answer2) => {
-        fitnessLevel = getFitnessLevel(parseInt(answer2));
-
-        rl.question('Do you have any medical conditions or surgeries?\n1. Yes\n2. No\n', (answer3) => {
-            CheckMedicalHistory(parseInt(answer3)).then((medicalHistory) => {
-                MedicalHistory = medicalHistory;
-                console.log('Your medical history:');
-                console.log(MedicalHistory);
 
 
-                // Read the workout categories from the JSON file
-                fs.readFile('WorkoutCategories.json', 'utf8', (err, data) => {
-                    if (err) {
-                        console.error('Error reading file:', err);
-                        return;
-                    }
 
-                    const workoutCategories = JSON.parse(data);
-                    let suitableWorkout = findSuitableWorkout(workoutCategories, fitnessGoal, fitnessLevel, MedicalHistory, MedicalHistory.age);
-
-                    console.log('Your suitable workout:');
-                    console.log(suitableWorkout);
-
-                    rl.close();
-                });
-            });
-        });
-    });
-});
+function userInput(userId){
+        // User input
+        const fitnessGoalIndex = readlineSync.keyInSelect(fitnessGoals, 'Select your Fitness Goal:', { cancel: false });
+        const fitnessGoal = fitnessGoals[fitnessGoalIndex];
+    
+        const fitnessLevelIndex = readlineSync.keyInSelect(fitnessLevels, 'Select your Current Fitness Level:', { cancel: false });
+        const fitnessLevel = fitnessLevels[fitnessLevelIndex];
+        const exerciseTime = calculateExerciseTime(fitnessLevel);
+    
+        const medicalConditionIndex = readlineSync.keyInSelect(medicalConditions, 'Do you have any medical conditions or surgeries?', { cancel: false });
+        console.log(medicalConditionIndex);
+        let MedicalHistory = {};
+        if (medicalConditionIndex === 0) { 
+            MedicalHistory = CheckMedicalHistory(medicalConditionIndex); 
+            console.log('Your medical history:');
+            console.log('Age: ' + MedicalHistory.age);
+            console.log('Medical Conditions: ' + MedicalHistory.medicalHistory.conditions.join(', '));
+            console.log('Surgeries: ' + MedicalHistory.medicalHistory.surgeries.join(', '));
+        }else{
+            MedicalHistory = CheckMedicalHistory(medicalConditionIndex);
+        }
+    
+        // Read the workout categories from the JSON file
+        try {
+            const data = fs.readFileSync('WorkoutCategories.json', 'utf8');
+            const workoutCategories = JSON.parse(data);
+            let suitableWorkout = findSuitableWorkout(workoutCategories, fitnessGoal, fitnessLevel, exerciseTime, MedicalHistory, MedicalHistory.age);
+        
+            if (suitableWorkout) {
+                console.log('Your suitable workout:\n');
+                console.log(suitableWorkout.result);
+        
+                // Prepare user data object
+                const userData = {
+                    userId: userId,
+                    fitnessGoal: fitnessGoal,
+                    duration: suitableWorkout.totalExerciseTime,
+                    fitnessLevel: fitnessLevel,
+                    medicalHistory: MedicalHistory
+                };
+                // Save user data to file using the function
+                saveUserDataToFile(userData);
+            } else {
+                console.log('No suitable workout found.');
+            }
+        } catch (err) {
+            console.error('Error reading file:', err);
+        }
+}

@@ -1,0 +1,340 @@
+[
+    {
+        "userId": 1029,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [
+                    "Uncontrolled hypertension"
+                ],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1030,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 31,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1054,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 41,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1055,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1056,
+        "fitnessGoal": "Muscle Building",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1057,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 31,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 11,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1060,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1058,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 31,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1061,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 31,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1062,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 31,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1063,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 31,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1064,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 100,
+        "medicalHistory": {
+            "age": 31,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1065,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1066,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1067,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 30,
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1068,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1069,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1070,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "duration": 0,
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1074,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1075,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1076,
+        "fitnessGoal": "Weight Loss",
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1077,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1078,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1079,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [
+                    "Uncontrolled hypertension"
+                ],
+                "surgeries": []
+            }
+        }
+    }
+]

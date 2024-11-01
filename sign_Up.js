@@ -7,7 +7,21 @@ const BLOCK_DURATION = 60; // 60 seconds
 
 let attempts = 0;
 let blocked = false;
-let nextUserId = 1000; // user Id
+let nextUserId = 1; 
+let usersData = [];
+
+try {
+    usersData = JSON.parse(fs.readFileSync('users.json', 'utf8'));
+
+    const maxUserId = usersData.reduce((max, user) => (user.id > max ? user.id : max), 0);
+    nextUserId = maxUserId + 1;
+} catch (error) {
+    console.error('Error reading users.json file or file is empty. Starting with default nextUserId.');
+    // Handle the error or initialize nextUserId to a default value
+    nextUserId = 1;
+}
+
+let userId = nextUserId;
 
 if (fs.existsSync('userId.txt')) {
     const data = fs.readFileSync('userId.txt', 'utf8');
@@ -32,6 +46,7 @@ function retrySignUp() {
 }
 
 function signUp() {
+
     if (blocked) {
         console.log(`Too many unsuccessful attempts. Please try again after ${BLOCK_DURATION} seconds.`);
         return false;
@@ -47,7 +62,7 @@ function signUp() {
             return false;
         }
         retrySignUp();
-        return false;
+        return { success: true, userId: userId };
     }
 
     let password = readlineSync.question('Enter your password: ', { hideEchoBack: true });
@@ -60,10 +75,8 @@ function signUp() {
             return false;
         }
         retrySignUp();
-        return false;
+        return { success: true, userId: userId };
     }
-
-    let usersData = [];
 
     try {
         usersData = JSON.parse(fs.readFileSync('users.json', 'utf8'));
@@ -78,10 +91,9 @@ function signUp() {
         return { success: false, userId: null };
     }
 
-    const userId = nextUserId++;
 
     usersData.push({ id: userId, username, password: hashedPassword });
-    fs.writeFileSync('userId.txt', nextUserId.toString(), 'utf8');
+    // fs.writeFileSync('userId.txt', nextUserId.toString(), 'utf8');
 
     fs.writeFileSync('users.json', JSON.stringify(usersData, null, 2), 'utf8');
 
