@@ -511,6 +511,32 @@
         }
     },
     {
+        "userId": 1098,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1102,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
         "userId": 1101,
         "fitnessGoal": "Weight Loss",
         "duration": 180,
