@@ -54,6 +54,38 @@ function getMedicalCondition(choice) {
             return 'Fibromyalgia';
         case 10:
             return 'Chronic fatigue syndrome';
+        case 11:
+            return 'Herniated Discs';
+        case 12:
+            return 'Rotator Cuff';
+        case 13:
+            return 'Musculoskeletal Disorder';
+        case 14:
+            return 'Achilles Tendon';
+        case 15:
+            return 'Peripheral Neuropathy';
+        case 16:
+            return 'Arrhythmias';
+        case 17:
+            return 'Seizure Disorders';
+        case 18:
+            return 'Peripheral Vascular Disease';
+        case 19:
+            return 'Epilepsy';
+        case 20:
+            return 'Cardiovascular Condition';
+        case 21:
+            return 'Obesity';
+        case 22:
+            return 'Multiple Sclerosis';
+        case 23:
+            return 'Parkinson\'s Disease';
+        case 24:
+            return 'Respiratory Condition';
+        case 25:
+            return 'Neurological Disorders';
+        case 26:
+            return 'Arthritis';
         default:
             return 'Unknown';
     }
@@ -79,10 +111,37 @@ function getSurgery(choice) {
             return 'Hernia repair';
         case 9:
             return 'Brain surgery';
+        case 10:
+            return 'Joint Replacement Surgery';
+        case 11:
+            return 'Shoulder Surgery';
+        case 12:
+            return 'Rotator Cuff Repair';
+        case 13:
+            return 'Tennis Elbow Repair';
+        case 14:
+            return 'Carpal Tunnel Release';
+        case 15:
+            return 'Cardiac Surgery';
+        case 16:
+            return 'Stent Placement';
+        case 17:
+            return 'Gastric Bypass Surgery';
+        case 18:
+            return 'Orthopedic Surgery';
+        case 19:
+            return 'Microdiscectomy';
+        case 20:
+            return 'Ligament Reconstruction Surgery';
+        case 21:
+            return 'ACL Reconstruction';
+        case 22:
+            return 'Abdominal Surgery';
         default:
             return 'Unknown';
     }
 }
+
 
 // Calculate required exercise time based on fitness level
 function calculateExerciseTime(currentFitnessLevel) {
