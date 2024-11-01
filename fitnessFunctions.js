@@ -192,7 +192,7 @@ function findSuitableWorkout(workoutCategories, goal, level, exerciseTime, Medic
     }
 
     // If no suitable workout is found
-    return 'No suitable workout found.';
+    return {success: false, message: 'No suitable workout found.'};
 }
 
 // Function to save user data to a JSON file
