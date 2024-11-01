@@ -94,13 +94,22 @@ function signUp() {
         return { success: false, userId: null };
     }
 
-    usersData.push({ id: userId, username, password: hashedPassword });
-    // fs.writeFileSync('userId.txt', nextUserId.toString(), 'utf8');
-
-    fs.writeFileSync('users.json', JSON.stringify(usersData, null, 2), 'utf8');
-
-    console.log('Sign-up successful! User data saved.');
-    return { success: true, userId: userId };
+    try {
+        // Check write permissions on the 'users.json' file
+        fs.accessSync('users.json', fs.constants.W_OK);
+        
+        // Add user data to usersData
+        usersData.push({ id: userId, username, password: hashedPassword });
+    
+        // Write user data to the 'users.json' file
+        fs.writeFileSync('users.json', JSON.stringify(usersData, null, 2), 'utf8');
+    
+        console.log('Sign-up successful! User data saved.');
+        return { success: true, userId: userId };
+    } catch (err) {
+        console.error('Error writing to users.json file:', err);
+        return { success: false, error: 'Failed to save user data' };
+    }
 }
 
 module.exports = { signUp };
