@@ -192,30 +192,64 @@ function CheckMedicalHistory(choice) {
         }
     }
 
-    function askForConditionOrSurgery() {
-        while (true) {
-            const options = ['Add Medical Condition', 'Add Surgery', 'Done'];
-            const index = readlineSync.keyInSelect(options, 'Do you want to add a medical condition or a surgery?');
+    const readlineSync = require('readline-sync');
 
-            if (index === 0) {
-                const conditionOptions = ['Uncontrolled hypertension', 'Recent heart attack', 'Unstable angina', 'Severe heart failure', 'Severe asthma', 'Chronic obstructive pulmonary disease (COPD)', 'Severe osteoarthritis', 'Rheumatoid arthritis', 'Fibromyalgia', 'Chronic fatigue syndrome'];
-                const conditionAnswer = readlineSync.keyInSelect(conditionOptions, 'Select a medical condition:');
-                if (conditionAnswer !== -1) {
-                    medicalHistory.conditions.push(getMedicalCondition(conditionAnswer + 1));
-                }
-            } else if (index === 1) {
-                const surgeryOptions = ['Coronary artery bypass grafting (CABG)', 'Heart valve surgery', 'Spinal fusion', 'Major spinal surgeries', 'Hip replacement', 'Knee replacement', 'Appendectomy', 'Hernia repair', 'Brain surgery'];
-                const surgeryAnswer = readlineSync.keyInSelect(surgeryOptions, 'Select a surgery:');
-                if (surgeryAnswer !== -1) {
-                    medicalHistory.surgeries.push(getSurgery(surgeryAnswer + 1));
-                }
-            } else if (index === -1 || index === 2) {
-                return { age: userAge, medicalHistory };
-            } else {
-                console.log('Invalid choice. Please select an option.');
+function askForConditionOrSurgery() {
+    while (true) {
+        const options = ['Add Medical Condition', 'Add Surgery', 'Done'];
+        const index = readlineSync.keyInSelect(options, 'Do you want to add a medical condition or a surgery?');
+
+        if (index === 0) {
+            // Expanded list of medical conditions
+            const conditionOptions = [
+                'Uncontrolled hypertension', 'Recent heart attack', 'Unstable angina', 'Severe heart failure',
+                'Severe asthma', 'Chronic obstructive pulmonary disease (COPD)', 'Severe osteoarthritis',
+                'Rheumatoid arthritis', 'Fibromyalgia', 'Chronic fatigue syndrome', 'Herniated Discs',
+                'Rotator Cuff', 'Musculoskeletal Disorder', 'Achilles Tendon', 'Peripheral Neuropathy',
+                'Arrhythmias', 'Seizure Disorders', 'Peripheral Vascular Disease', 'Epilepsy', 
+                'Cardiovascular Condition', 'Obesity', 'Multiple Sclerosis', 'Parkinson\'s Disease', 
+                'Respiratory Condition', 'Neurological Disorders', 'Arthritis'
+            ];
+
+            console.log('Select a medical condition:');
+            conditionOptions.forEach((condition, idx) => {
+                console.log(`[${idx + 1}] ${condition}`);
+            });
+            console.log('[0] CANCEL');
+
+            const conditionAnswer = parseInt(readlineSync.question('Enter your choice (number): '), 10) - 1;
+            if (conditionAnswer >= 0 && conditionAnswer < conditionOptions.length) {
+                medicalHistory.conditions.push(getMedicalCondition(conditionAnswer + 1));
             }
+        } else if (index === 1) {
+            // Expanded list of surgeries
+            const surgeryOptions = [
+                'Coronary artery bypass grafting (CABG)', 'Heart valve surgery', 'Spinal fusion', 
+                'Major spinal surgeries', 'Hip replacement', 'Knee replacement', 'Appendectomy', 
+                'Hernia repair', 'Brain surgery', 'Joint Replacement Surgery', 'Shoulder Surgery', 
+                'Rotator Cuff Repair', 'Tennis Elbow Repair', 'Carpal Tunnel Release', 'Cardiac Surgery', 
+                'Stent Placement', 'Gastric Bypass Surgery', 'Orthopedic Surgery', 'Microdiscectomy', 
+                'Ligament Reconstruction Surgery', 'ACL Reconstruction', 'Abdominal Surgery'
+            ];
+
+            console.log('Select a surgery:');
+            surgeryOptions.forEach((surgery, idx) => {
+                console.log(`[${idx + 1}] ${surgery}`);
+            });
+            console.log('[0] CANCEL');
+
+            const surgeryAnswer = parseInt(readlineSync.question('Enter your choice (number): '), 10) - 1;
+            if (surgeryAnswer >= 0 && surgeryAnswer < surgeryOptions.length) {
+                medicalHistory.surgeries.push(getSurgery(surgeryAnswer + 1));
+            }
+        } else if (index === -1 || index === 2) {
+            return { age: userAge, medicalHistory };
+        } else {
+            console.log('Invalid choice. Please select an option.');
         }
     }
+}
+
 
     return askForAge();
 }
