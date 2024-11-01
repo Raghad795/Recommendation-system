@@ -163,14 +163,28 @@ function calculateExerciseTime(currentFitnessLevel) {
 
     return additionalTime;
 }
+
+function validateAge(userAge) {
+    if (isNaN(userAge) || userAge < 1 || userAge > 99 || userAge % 1 !== 0) {
+        return false;
+    }
+    return true;
+}
+
 function CheckMedicalHistory(choice) {
     let userAge = null;
     let medicalHistory = { conditions: [], surgeries: [] };
 
-    const ageAnswer = parseInt(readlineSync.question('Please enter your age: '));
-    userAge = parseInt(ageAnswer);
-
     function askForAge() {
+        const ageAnswer = parseInt(readlineSync.question('Please enter your age: '));
+
+        if (!validateAge(ageAnswer)) {
+            console.log('Invalid age input.');
+            return askForAge(); // Re-call the function if the age input is invalid
+        }
+
+        userAge = ageAnswer;
+
         if (choice === 0) {
             return askForConditionOrSurgery();
         } else {
