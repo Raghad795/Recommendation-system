@@ -8,18 +8,28 @@ let attempts = 0;
 function hashPassword(password) {
     return crypto.createHash('sha256').update(password).digest('hex');
 }
-
+// Function to check user credentials
 function checkUser(username, password) {
-    try {
-        const usersData = JSON.parse(fs.readFileSync('users.json', 'utf8'));
-        const hashedPassword = hashPassword(password);
+    const usersFilePath = 'users.json';
 
-        const user = usersData.find(user => user.username === username && user.password === hashedPassword);
-        return user;
-    } catch (error) {
-        console.error('Error reading user data or user not found.');
-        return null;
-    }
+    // Check file access permissions before reading the file
+    fs.access(usersFilePath, fs.constants.R_OK, (err) => {
+        if (err) {
+            console.error('No access to read users file:', err);
+            return null;
+        }
+
+        try {
+            const usersData = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'));
+            const hashedPassword = hashPassword(password);
+
+            const user = usersData.find(user => user.username === username && user.password === hashedPassword);
+            return user;
+        } catch (error) {
+            console.error('Error reading user data or user not found.');
+            return null;
+        }
+    });
 }
 
 function signIn() {

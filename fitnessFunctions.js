@@ -268,44 +268,60 @@ function saveUserDataToFile(userData) {
 
     let users = [];
 
-    // Check if the file exists
-    if (fs.existsSync(filePath)) {
-        try {
-            const data = fs.readFileSync(filePath, 'utf8');
-            users = JSON.parse(data);
-        } catch (err) {
-            console.error('Error reading or parsing user data file:', err);
+    // Check if the file exists and if the user has write permissions
+    fs.access(filePath, fs.constants.W_OK, (err) => {
+        if (err) {
+            console.error('No access to write to file:', err);
+            return;
         }
-    }
 
-    // Add the new user data to the users array
-    users.push(userData);
+        // Check if the file exists
+        if (fs.existsSync(filePath)) {
+            try {
+                const data = fs.readFileSync(filePath, 'utf8');
+                users = JSON.parse(data);
+            } catch (err) {
+                console.error('Error reading or parsing user data file:', err);
+            }
+        }
 
-    // Write updated user data back to file
-    try {
-        fs.writeFileSync(filePath, JSON.stringify(users, null, 4));
-        console.log('User data has been saved successfully.');
-    } catch (err) {
-        console.error('Error writing user data to file:', err);
-    }
+        // Add the new user data to the users array
+        users.push(userData);
+
+        // Write updated user data back to file
+        try {
+            fs.writeFileSync(filePath, JSON.stringify(users, null, 4));
+            console.log('User data has been saved successfully.');
+        } catch (err) {
+            console.error('Error writing user data to file:', err);
+        }
+    });
 }
 
 // Function to get user data by userId
 function getUserDataById(userId) {
     const filePath = 'userInfo.json';
 
-    try {
-        const data = fs.readFileSync(filePath, 'utf8');
-        const users = JSON.parse(data);
+    // Check file access permissions before reading the file
+    fs.access(filePath, fs.constants.R_OK, (err) => {
+        if (err) {
+            console.error('No access to read file:', err);
+            return null;
+        }
 
-        // Find the user with the matching userId
-        const userData = users.find(user => user.userId === userId);
+        try {
+            const data = fs.readFileSync(filePath, 'utf8');
+            const users = JSON.parse(data);
 
-        return userData;
-    } catch (err) {
-        console.error('Error reading or parsing user data file:', err);
-        return null;
-    }
+            // Find the user with the matching userId
+            const userData = users.find(user => user.userId === userId);
+
+            return userData;
+        } catch (err) {
+            console.error('Error reading or parsing user data file:', err);
+            return null;
+        }
+    });
 }
 // Function to format user data for display
 function formatUserData(userData) {
