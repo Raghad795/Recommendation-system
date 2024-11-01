@@ -110,7 +110,7 @@ function CheckMedicalHistory(choice) {
 
     const ageAnswer = parseInt(readlineSync.question('Please enter your age: '));
     userAge = parseInt(ageAnswer);
-    
+
     function askForAge() {
         if (choice === 0) {
             return askForConditionOrSurgery();
@@ -121,17 +121,25 @@ function CheckMedicalHistory(choice) {
 
     function askForConditionOrSurgery() {
         while (true) {
-            const selection = parseInt(readlineSync.question('Do you want to add a medical condition or a surgery?\n1. Medical Condition\n2. Surgery\n3. Done\n'));
-            if (selection === 1) {
-                const conditionAnswer = parseInt(readlineSync.question('Select a medical condition:\n1. Uncontrolled hypertension\n2. Recent heart attack\n3. Unstable angina\n4. Severe heart failure\n5. Severe asthma\n6. Chronic obstructive pulmonary disease (COPD)\n7. Severe osteoarthritis\n8. Rheumatoid arthritis\n9. Fibromyalgia\n10. Chronic fatigue syndrome\n'));
-                medicalHistory.conditions.push(getMedicalCondition(conditionAnswer));
-            } else if (selection === 2) {
-                const surgeryAnswer = parseInt(readlineSync.question('Select a surgery:\n1. Coronary artery bypass grafting (CABG)\n2. Heart valve surgery\n3. Spinal fusion\n4. Major spinal surgeries\n5. Hip replacement\n6. Knee replacement\n7. Appendectomy\n8. Hernia repair\n9. Brain surgery\n'));
-                medicalHistory.surgeries.push(getSurgery(surgeryAnswer));
-            } else if (selection === 3) {
+            const options = ['Add Medical Condition', 'Add Surgery', 'Done'];
+            const index = readlineSync.keyInSelect(options, 'Do you want to add a medical condition or a surgery?');
+
+            if (index === 0) {
+                const conditionOptions = ['Uncontrolled hypertension', 'Recent heart attack', 'Unstable angina', 'Severe heart failure', 'Severe asthma', 'Chronic obstructive pulmonary disease (COPD)', 'Severe osteoarthritis', 'Rheumatoid arthritis', 'Fibromyalgia', 'Chronic fatigue syndrome'];
+                const conditionAnswer = readlineSync.keyInSelect(conditionOptions, 'Select a medical condition:');
+                if (conditionAnswer !== -1) {
+                    medicalHistory.conditions.push(getMedicalCondition(conditionAnswer + 1));
+                }
+            } else if (index === 1) {
+                const surgeryOptions = ['Coronary artery bypass grafting (CABG)', 'Heart valve surgery', 'Spinal fusion', 'Major spinal surgeries', 'Hip replacement', 'Knee replacement', 'Appendectomy', 'Hernia repair', 'Brain surgery'];
+                const surgeryAnswer = readlineSync.keyInSelect(surgeryOptions, 'Select a surgery:');
+                if (surgeryAnswer !== -1) {
+                    medicalHistory.surgeries.push(getSurgery(surgeryAnswer + 1));
+                }
+            } else if (index === -1 || index === 2) {
                 return { age: userAge, medicalHistory };
             } else {
-                console.log('Invalid choice. Please select 1 for Medical Condition, 2 for Surgery, or 3 for Done.');
+                console.log('Invalid choice. Please select an option.');
             }
         }
     }

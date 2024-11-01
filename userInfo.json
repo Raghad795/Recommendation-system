@@ -439,5 +439,36 @@
                 "surgeries": []
             }
         }
+    },
+    {
+        "userId": 1091,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [
+                    "Chronic fatigue syndrome",
+                    "Uncontrolled hypertension"
+                ],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1092,
+        "fitnessGoal": "Weight Loss",
+        "duration": 170,
+        "fitnessLevel": "Intermediate",
+        "medicalHistory": {
+            "age": 21,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": [
+                    "Knee replacement"
+                ]
+            }
+        }
     }
 ]
