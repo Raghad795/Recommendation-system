@@ -535,5 +535,50 @@
                 "surgeries": []
             }
         }
+    },
+    {
+        "userId": 1101,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 12,
+            "medicalHistory": {
+                "conditions": [
+                    "Uncontrolled hypertension"
+                ],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1102,
+        "fitnessGoal": "Stress Relief",
+        "duration": 150,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 32,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1104,
+        "fitnessGoal": "Stress Relief",
+        "duration": 150,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 23,
+            "medicalHistory": {
+                "conditions": [
+                    "Arthritis"
+                ],
+                "surgeries": [
+                    "Shoulder Surgery"
+                ]
+            }
+        }
     }
 ]
