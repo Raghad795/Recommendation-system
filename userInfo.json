@@ -606,5 +606,28 @@
                 "surgeries": []
             }
         }
+    },
+    {
+        "userId": 1111,
+        "fitnessGoal": "Stress Relief",
+        "duration": 130,
+        "fitnessLevel": "Advanced",
+        "medicalHistory": {
+            "age": 3,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
+    },
+    {
+        "userId": 1113,
+        "fitnessGoal": "Improve Flexibility",
+        "duration": 100,
+        "fitnessLevel": "Advanced",
+        "medicalHistory": {
+            "iv": "cd8fa23e6564bcec3a657e9c8ef76266",
+            "content": "989c6b75fe963e4535b71a900f331e882e5fefa1441f6f9501bdd699ded191371e9164b3f9f112d15883607562cea6b9c596e881695e9ccb8f880397f2e1191166c44b852bca96c2734eda1ad538d309e788c16036ac0173a2afdb8cc3b54807"
+        }
     }
 ]
