@@ -593,5 +593,18 @@
                 "surgeries": []
             }
         }
+    },
+    {
+        "userId": 1110,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "age": 32,
+            "medicalHistory": {
+                "conditions": [],
+                "surgeries": []
+            }
+        }
     }
 ]

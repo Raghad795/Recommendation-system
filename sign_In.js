@@ -10,26 +10,16 @@ function hashPassword(password) {
 }
 // Function to check user credentials
 function checkUser(username, password) {
-    const usersFilePath = 'users.json';
+    try {
+        const usersData = JSON.parse(fs.readFileSync('users.json', 'utf8'));
+        const hashedPassword = hashPassword(password);
 
-    // Check file access permissions before reading the file
-    fs.access(usersFilePath, fs.constants.R_OK, (err) => {
-        if (err) {
-            console.error('No access to read users file:', err);
-            return null;
-        }
-
-        try {
-            const usersData = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'));
-            const hashedPassword = hashPassword(password);
-
-            const user = usersData.find(user => user.username === username && user.password === hashedPassword);
-            return user;
-        } catch (error) {
-            console.error('Error reading user data or user not found.');
-            return null;
-        }
-    });
+        const user = usersData.find(user => user.username === username && user.password === hashedPassword);
+        return user;
+    } catch (error) {
+        console.error('Error reading user data or user not found.');
+        return null;
+    }
 }
 
 function signIn() {
@@ -55,3 +45,26 @@ function signIn() {
 
 // sign-in
 module.exports = { signIn };
+
+// function checkUser(username, password) {
+//     const usersFilePath = 'users.json';
+
+//     // Check file access permissions before reading the file
+//     fs.access(usersFilePath, fs.constants.R_OK, (err) => {
+//         if (err) {
+//             console.error('No access to read users file:', err);
+//             return null;
+//         }
+
+//         try {
+//             const usersData = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'));
+//             const hashedPassword = hashPassword(password);
+
+//             const user = usersData.find(user => user.username === username && user.password === hashedPassword);
+//             return user;
+//         } catch (error) {
+//             console.error('Error reading user data or user not found.');
+//             return null;
+//         }
+//     });
+// }

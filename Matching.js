@@ -91,43 +91,74 @@ function userInput(userId){
         }else{
             MedicalHistory = CheckMedicalHistory(medicalConditionIndex);
         }
-    
-    // Check file access permissions before reading the file
-    fs.access('WorkoutCategories.json', fs.constants.R_OK, (err) => {
-        if (err) {
-            console.error('No access to read file:', err);
-            return;
-        }
 
-            // Read the workout categories from the JSON file
-            try {
-                const data = fs.readFileSync('WorkoutCategories.json', 'utf8');
-                const workoutCategories = JSON.parse(data);
-                let suitableWorkout = findSuitableWorkout(workoutCategories, fitnessGoal, fitnessLevel, exerciseTime, MedicalHistory, MedicalHistory.age);
-                if(suitableWorkout){
-                    if (suitableWorkout.success) {
-                        console.log('Your suitable workout:\n');
-                        console.log(suitableWorkout.result);
-                
-                        // Prepare user data object
-                        const userData = {
-                            userId: userId,
-                            fitnessGoal: fitnessGoal,
-                            duration: suitableWorkout.totalExerciseTime,
-                            fitnessLevel: fitnessLevel,
-                            medicalHistory: MedicalHistory
-                        };
-                        // Save user data to file using the function
-                        saveUserDataToFile(userData);
-                    } else {
-                        console.log(suitableWorkout.message);
-                    }
+        // Read the workout categories from the JSON file
+        try {
+            const data = fs.readFileSync('WorkoutCategories.json', 'utf8');
+            const workoutCategories = JSON.parse(data);
+            let suitableWorkout = findSuitableWorkout(workoutCategories, fitnessGoal, fitnessLevel, exerciseTime, MedicalHistory, MedicalHistory.age);
+            if(suitableWorkout){
+                if (suitableWorkout.success) {
+                    console.log('Your suitable workout:\n');
+                    console.log(suitableWorkout.result);
+            
+                    // Prepare user data object
+                    const userData = {
+                        userId: userId,
+                        fitnessGoal: fitnessGoal,
+                        duration: suitableWorkout.totalExerciseTime,
+                        fitnessLevel: fitnessLevel,
+                        medicalHistory: MedicalHistory
+                    };
+                    // Save user data to file using the function
+                    saveUserDataToFile(userData);
                 } else {
-                    console.log('No suitable workout found.')
+                    console.log(suitableWorkout.message);
                 }
-
-            } catch (err) {
-                console.error('Error reading file:', err);
+            }else{
+                console.log('No suitable workout found.')
             }
-    });
+
+        } catch (err) {
+            console.error('Error reading file:', err);
+        }
 }
+
+    // // Check file access permissions before reading the file
+    // fs.access('WorkoutCategories.json', fs.constants.R_OK, (err) => {
+    //     if (err) {
+    //         console.error('No access to read file:', err);
+    //         return;
+    //     }
+
+    //         // Read the workout categories from the JSON file
+    //         try {
+    //             const data = fs.readFileSync('WorkoutCategories.json', 'utf8');
+    //             const workoutCategories = JSON.parse(data);
+    //             let suitableWorkout = findSuitableWorkout(workoutCategories, fitnessGoal, fitnessLevel, exerciseTime, MedicalHistory, MedicalHistory.age);
+    //             if(suitableWorkout){
+    //                 if (suitableWorkout.success) {
+    //                     console.log('Your suitable workout:\n');
+    //                     console.log(suitableWorkout.result);
+                
+    //                     // Prepare user data object
+    //                     const userData = {
+    //                         userId: userId,
+    //                         fitnessGoal: fitnessGoal,
+    //                         duration: suitableWorkout.totalExerciseTime,
+    //                         fitnessLevel: fitnessLevel,
+    //                         medicalHistory: MedicalHistory
+    //                     };
+    //                     // Save user data to file using the function
+    //                     saveUserDataToFile(userData);
+    //                 } else {
+    //                     console.log(suitableWorkout.message);
+    //                 }
+    //             } else {
+    //                 console.log('No suitable workout found.')
+    //             }
+
+    //         } catch (err) {
+    //             console.error('Error reading file:', err);
+    //         }
+    // });

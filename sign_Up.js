@@ -79,12 +79,9 @@ function signUp() {
     }
 
     try {
-        fs.accessSync('users.json', fs.constants.R_OK | fs.constants.W_OK);
         usersData = JSON.parse(fs.readFileSync('users.json', 'utf8'));
     } catch (error) {
-        // Handle file access permission error
-        console.error('Error accessing users.json file. Please check file permissions.');
-        return { success: false, userId: null };
+        // If the file doesn't exist or is empty, usersData will remain an empty array
     }
 
     const hashedPassword = hashPassword(password);
@@ -113,3 +110,12 @@ function signUp() {
 }
 
 module.exports = { signUp };
+
+// try {
+//     fs.accessSync('users.json', fs.constants.R_OK | fs.constants.W_OK);
+//     usersData = JSON.parse(fs.readFileSync('users.json', 'utf8'));
+// } catch (error) {
+//     // Handle file access permission error
+//     console.error('Error accessing users.json file. Please check file permissions.');
+//     return { success: false, userId: null };
+// }
