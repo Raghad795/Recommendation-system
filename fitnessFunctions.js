@@ -1,5 +1,6 @@
 const fs = require('fs');
 const readlineSync = require('readline-sync');
+const crypto = require('crypto');
 
 //User input variables
 function getFitnessGoal(choice) {
@@ -192,10 +193,6 @@ function CheckMedicalHistory(choice) {
         }
     }
 
-  
-    const readlineSync = require('readline-sync');
-  
-
     function askForConditionOrSurgery() {
         while (true) {
             const options = ['Add Medical Condition', 'Add Surgery', 'Done'];
@@ -379,6 +376,7 @@ function getUserDataById(userId) {
 }
 
 function formatUserData(userData) {
+
     return `Fitness Goal: ${userData.fitnessGoal}\n` +
            `Duration: ${userData.duration}\n` +
            `Fitness Level: ${userData.fitnessLevel}\n` +
@@ -388,8 +386,6 @@ function formatUserData(userData) {
            `  Surgeries: ${userData.medicalHistory.medicalHistory.surgeries.join(', ')}`;
 }
 
-const crypto = require('crypto');
-
 function hashMedicalHistory(medicalHistory) {
     const algorithm = 'aes-256-cbc';
     const key = crypto.randomBytes(32); // Generate a secure random key
@@ -398,14 +394,23 @@ function hashMedicalHistory(medicalHistory) {
     const cipher = crypto.createCipheriv(algorithm, key, iv);
     let encryptedMedicalHistory = cipher.update(JSON.stringify(medicalHistory), 'utf8', 'hex');
     encryptedMedicalHistory += cipher.final('hex');
-    
+
     return {
+        key: key.toString('hex'),
         iv: iv.toString('hex'),
         content: encryptedMedicalHistory
     };
 }
 
-module.exports = {findSuitableWorkout, calculateExerciseTime, CheckMedicalHistory, saveUserDataToFile, getUserDataById, formatUserData, hashMedicalHistory};
+function decryptMedicalHistory(encryptedMedicalHistory, key, iv) {
+    const algorithm = 'aes-256-cbc';
+    const decipher = crypto.createDecipheriv(algorithm, Buffer.from(key, 'hex'), Buffer.from(iv, 'hex'));
+    let decryptedMedicalHistory = decipher.update(encryptedMedicalHistory, 'hex', 'utf8');
+    decryptedMedicalHistory += decipher.final('utf8');
+    return JSON.parse(decryptedMedicalHistory);
+}
+
+module.exports = {findSuitableWorkout, calculateExerciseTime, CheckMedicalHistory, saveUserDataToFile, getUserDataById, formatUserData, hashMedicalHistory, decryptMedicalHistory};
 
 // // Function to save user data to a JSON file
 // function saveUserDataToFile(userData) {
