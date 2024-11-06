@@ -388,7 +388,24 @@ function formatUserData(userData) {
            `  Surgeries: ${userData.medicalHistory.medicalHistory.surgeries.join(', ')}`;
 }
 
-module.exports = {findSuitableWorkout, calculateExerciseTime, CheckMedicalHistory, saveUserDataToFile, getUserDataById, formatUserData};
+const crypto = require('crypto');
+
+function hashMedicalHistory(medicalHistory) {
+    const algorithm = 'aes-256-cbc';
+    const key = crypto.randomBytes(32); // Generate a secure random key
+    const iv = crypto.randomBytes(16); // Generate a secure random IV
+
+    const cipher = crypto.createCipheriv(algorithm, key, iv);
+    let encryptedMedicalHistory = cipher.update(JSON.stringify(medicalHistory), 'utf8', 'hex');
+    encryptedMedicalHistory += cipher.final('hex');
+    
+    return {
+        iv: iv.toString('hex'),
+        content: encryptedMedicalHistory
+    };
+}
+
+module.exports = {findSuitableWorkout, calculateExerciseTime, CheckMedicalHistory, saveUserDataToFile, getUserDataById, formatUserData, hashMedicalHistory};
 
 // // Function to save user data to a JSON file
 // function saveUserDataToFile(userData) {
