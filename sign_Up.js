@@ -55,7 +55,7 @@ function signUp() {
     let username = readlineSync.question('Enter your username: ').trim();
 
     if (!validateUsername(username)) {
-        console.error('Invalid username format. Please make sure your username meets the requirements.');
+        console.error('Invalid username format. Username must be 3-20 characters long and contain only letters and numbers.');
         attempts++;
         if (attempts >= MAX_ATTEMPTS) {
             console.log('Exceeded maximum attempts. Please try again later.');
@@ -68,7 +68,7 @@ function signUp() {
     let password = readlineSync.question('Enter your password: ', { hideEchoBack: true });
 
     if (!validatePassword(password)) {
-        console.error('Invalid password format. Please make sure your password meets the requirements.');
+        console.error('Invalid password format. Password must be at least 6 characters long, include at least one letter, one number, and one special character.');
         attempts++;
         if (attempts >= MAX_ATTEMPTS) {
             console.log('Exceeded maximum attempts. Please try again later.');
@@ -87,7 +87,7 @@ function signUp() {
     const hashedPassword = hashPassword(password);
 
     if (usersData.find(user => user.username === username)) {
-        console.error('Username already exists. Please choose a different one.');
+        console.error('Username already exists. Please choose a different username.');
         return { success: false, userId: null };
     }
 
