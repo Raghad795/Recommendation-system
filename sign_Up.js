@@ -7,7 +7,7 @@ const BLOCK_DURATION = 60 * 1000; // 60 seconds in milliseconds
 
 let attempts = 0;
 let blocked = false;
-let blockStartTime = null; // to track when the blocking starts
+let blockStartTime = null; //  to track when the blocking starts
 let nextUserId = 1;
 let usersData = [];
 
@@ -101,7 +101,7 @@ function handleFailedAttempt() {
     if (attempts >= MAX_ATTEMPTS) {
         blocked = true;
         blockStartTime = Date.now(); // Record the block start time
-        console.log('Exceeded maximum attempts. Blocking for 60 seconds.');
+        console.log('Exceeded maximum sign-up attempts. Please try again after 60s.');
         setTimeout(() => {
             blocked = false;
             attempts = 0;
