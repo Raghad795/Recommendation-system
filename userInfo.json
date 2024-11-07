@@ -629,5 +629,16 @@
             "iv": "cd8fa23e6564bcec3a657e9c8ef76266",
             "content": "989c6b75fe963e4535b71a900f331e882e5fefa1441f6f9501bdd699ded191371e9164b3f9f112d15883607562cea6b9c596e881695e9ccb8f880397f2e1191166c44b852bca96c2734eda1ad538d309e788c16036ac0173a2afdb8cc3b54807"
         }
+    },
+    {
+        "userId": 1114,
+        "fitnessGoal": "Improve Cardiovascular Health",
+        "duration": 100,
+        "fitnessLevel": "Advanced",
+        "medicalHistory": {
+            "key": "9e19b11fe0b6f10fe89162082ec4e2afe75355b87a0c990e4e3e7ec68f2e2b38",
+            "iv": "fb5e2dc80a0c2af03ddf543d59b119da",
+            "content": "310819137da19ee99bd5444f192fba4c384fb9ae78e37b321f59f7f6058157e5fc924967d25508b8ca5c9004963aa30c6ac9853e2b177020e5378777c424e759b5fec1e0b99db6a4a85c271c4b38dc19cbe2b3f645eb36e7537d2e48737de33c"
+        }
     }
 ]
