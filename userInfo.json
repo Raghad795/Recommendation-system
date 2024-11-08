@@ -662,5 +662,16 @@
             "iv": "0b3d3327b08f589114534d9853e2a03a",
             "content": "25dbda54213902c667af217d0e2f13d5f57062d730174d136096625a887a6043d4e714dc591298778d19eb866c2948a82651ca1e5703c9002f9c68c095508889"
         }
+    },
+    {
+        "userId": 1119,
+        "fitnessGoal": "Weight Loss",
+        "duration": 180,
+        "fitnessLevel": "Beginner",
+        "medicalHistory": {
+            "key": "63abe2574b277f94ab02b359eb7d7150367c4dc5ec605c8ddf7329d734304f6d",
+            "iv": "e8a3aba5f531ca48f13baf6bd84ac41f",
+            "content": "9f2e4349f2cc0dc4d32f639af4edf7f4ec2b5e9149846852ce224f2e8da76cb3a46d1d7a96990b191d71c01b3dc6cdf5cb4a615a9c1f3478bac87fc4dce815aa63951802394500f49daec31a681343c39a30d736679335a2020eb87a4c1a4aef"
+        }
     }
 ]
