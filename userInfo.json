@@ -1,0 +1,35 @@
+[
+    {
+        "userId": 1,
+        "fitnessGoal": "Stress Relief",
+        "duration": 140,
+        "fitnessLevel": "Intermediate",
+        "medicalHistory": {
+            "key": "47673599a5f4f9612a5586475cdf01e15152cc90697bbfd1b1e6ee1187f83037",
+            "iv": "79d5ba37abf36ded929e448c05b69406",
+            "content": "9c2d19de7ed3384ed9ea818079a86c235408d28d23afe42de8bfe8ed9717f987f47ffc3a3a8734865430cb03dd25cecff0c47d568be9dd50bd691fa9e47213f02ac3a71ad39ad6e79b3d3e15d6399d7c"
+        }
+    },
+    {
+        "userId": 2,
+        "fitnessGoal": "Muscle Building",
+        "duration": 140,
+        "fitnessLevel": "Intermediate",
+        "medicalHistory": {
+            "key": "a0bc56c39ddbf201cee93dcd4ee9eac7a682860e00c8eb1b97a5bb4c3576db4c",
+            "iv": "7d58d9c384e9bc832ff291ea0d491795",
+            "content": "9e08007a332dc1062663ff378cb29db3fda619f0bdf2962b731c330317d7b0ee9fe9cd57763e700a661cb285ec4fcfa88f87b4fc1795eca6e4954440add2a278d2b5b1c61a9ef34f381e8a63909f9f17"
+        }
+    },
+    {
+        "userId": 3,
+        "fitnessGoal": "Improve Flexibility",
+        "duration": 110,
+        "fitnessLevel": "Intermediate",
+        "medicalHistory": {
+            "key": "8d34dacdd7a6768e192cb1e970a697748ce2af69b19fad3e2a088ef848cf0a25",
+            "iv": "81e64463d378ec7e7a700d620521702b",
+            "content": "48f5d96b55c44d8c2143daef665542c741fb3b209e4531336279ae6d961993d679d2db3c8243cc83e7ce986ad5be790b0a220b61e87778f14501a2551d12415213a840a8ca66485a32da8c5b03ace01468f123f32c315d5a7e83e1d515407396"
+        }
+    }
+]
