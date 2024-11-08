@@ -3,36 +3,6 @@ const readlineSync = require('readline-sync');
 const crypto = require('crypto');
 
 //User input variables
-function getFitnessGoal(choice) {
-    switch (choice) {
-        case 1:
-            return 'Weight Loss';
-        case 2:
-            return 'Muscle Building';
-        case 3:
-            return 'Improve Flexibility';
-        case 4:
-            return 'Improve Cardiovascular Health';
-        case 5:
-            return 'Stress Relief';
-        default:
-            return 'Unknown';
-    }
-}
-
-function getFitnessLevel(choice) {
-    switch (choice) {
-        case 1:
-            return 'Beginner';
-        case 2:
-            return 'Intermediate';
-        case 3:
-            return 'Advanced';
-        default:
-            return 'Unknown';
-    }
-}
-
 function getMedicalCondition(choice) {
     switch (choice) {
         case 1:
@@ -411,66 +381,3 @@ function decryptMedicalHistory(encryptedMedicalHistory, key, iv) {
 }
 
 module.exports = {findSuitableWorkout, calculateExerciseTime, CheckMedicalHistory, saveUserDataToFile, getUserDataById, formatUserData, encryptMedicalHistory, decryptMedicalHistory};
-
-// // Function to save user data to a JSON file
-// function saveUserDataToFile(userData) {
-//     const filePath = 'userInfo.json';
-
-//     let users = [];
-
-//     // Check if the file exists and if the user has write permissions
-//     fs.access(filePath, fs.constants.W_OK, (err) => {
-//         if (err) {
-//             console.error('No access to write to file:', err);
-//             return;
-//         }
-
-//         // Check if the file exists
-//         if (fs.existsSync(filePath)) {
-//             try {
-//                 const data = fs.readFileSync(filePath, 'utf8');
-//                 users = JSON.parse(data);
-//             } catch (err) {
-//                 console.error('Error reading or parsing user data file:', err);
-//             }
-//         }
-
-//         // Add the new user data to the users array
-//         users.push(userData);
-
-//         // Write updated user data back to file
-//         try {
-//             fs.writeFileSync(filePath, JSON.stringify(users, null, 4));
-//             console.log('User data has been saved successfully.');
-//         } catch (err) {
-//             console.error('Error writing user data to file:', err);
-//         }
-//     });
-// }
-
-// // Function to get user data by userId
-// function getUserDataById(userId) {
-//     const filePath = 'userInfo.json';
-
-//     // Check file access permissions before reading the file
-//     fs.access(filePath, fs.constants.R_OK, (err) => {
-//         if (err) {
-//             console.error('No access to read file:', err);
-//             return null;
-//         }
-
-//         try {
-//             const data = fs.readFileSync(filePath, 'utf8');
-//             const users = JSON.parse(data);
-
-//             // Find the user with the matching userId
-//             const userData = users.find(user => user.userId === userId);
-
-//             return userData;
-//         } catch (err) {
-//             console.error('Error reading or parsing user data file:', err);
-//             return null;
-//         }
-//     });
-// }
-// Function to format user data for display
