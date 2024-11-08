@@ -3,7 +3,7 @@ const readlineSync = require('readline-sync');
 const fs = require('fs');
 const { signUp } = require('./sign_Up');
 const { signIn } = require('./sign_In'); 
-const { findSuitableWorkout, CheckMedicalHistory, calculateExerciseTime, saveUserDataToFile, getUserDataById, formatUserData, hashMedicalHistory, decryptMedicalHistory } = require('./fitnessFunctions');
+const { findSuitableWorkout, CheckMedicalHistory, calculateExerciseTime, saveUserDataToFile, getUserDataById, formatUserData, encryptMedicalHistory, decryptMedicalHistory } = require('./fitnessFunctions');
 
 const fitnessGoals = [
     'Weight Loss',
@@ -115,7 +115,7 @@ function userInput(userId) {
                     medicalHistory: MedicalHistory
                 };
                 // Encrypt the medical history data before saving
-                const encryptedMedicalHistory = hashMedicalHistory(MedicalHistory);
+                const encryptedMedicalHistory = encryptMedicalHistory(MedicalHistory);
                 userData.medicalHistory = encryptedMedicalHistory;
 
                 // Save user data to file
